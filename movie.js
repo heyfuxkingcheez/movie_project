@@ -6,8 +6,8 @@ const options = {
         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzc4YmI0ZTA3ZGM2ZmM5NTIwYjg2OGU2OTQ0MjA5MSIsInN1YiI6IjY1MmY3MTEwYzk5NWVlMDEwMGRlOWEzOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6feX7u20gdSOrsez2RlWSmZyIfdyK-tkrj6YwN2JHIk'
     }
 };
-
-fetch('https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=1',
+for (let i = 0; i < 5; i++) {
+fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=${i}`,
     options)
     .then(response => response.json())
     .then(response => {
@@ -23,6 +23,7 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=1',
             let moviePoster = `https://image.tmdb.org/t/p/w500${movieArr[i].poster_path}`;
             let movieId = movieArr[i].id;
             let movieRating = movieArr[i].vote_average;
+            let movieDate = movieArr[i].release_date;
 
             temp.innerHTML = `
             <div class="movie-card">
@@ -34,10 +35,12 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=1',
             <div class="posterContentsBox">
                 <span class="posterId">${movieId}</span>
                 <h2 class="title">${movieTitle}</h2>
+                <div class="release">${movieDate} 개봉</div>
                 <div class="ratingBox">
-                <span class="rating">${movieRating}</span>
+                <span class="rating">⭐${movieRating}</span>
+            
                 </div>
-                <p class="overview">${movieOverview}</p>
+                <p class="overview">${movieOverview.length > 0 ? movieOverview : "줄거리가 없습니다."}</p>
             </div>
             </div>`;
             
@@ -45,4 +48,5 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=1',
         })
     })
     .catch(error => console.log('ERROR'));
+}
 
