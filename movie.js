@@ -26,7 +26,7 @@ fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=${i}`,
             let movieDate = movieArr[i].release_date;
 
             temp.innerHTML = `
-            <div class="movie-card">
+            <div class="movie-card" id="card">
             <img
                 class="movie-card img"
                 src=${moviePoster}
@@ -49,4 +49,14 @@ fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-kr&page=${i}`,
     })
     .catch(error => console.log('ERROR'));
 }
+
+// 클릭 시 alert창
+document.addEventListener('DOMContentLoaded', () => {
+    const movieContent = document.querySelector("#card")
+
+    movieContent.addEventListener('click', (event) => {
+        console.log("아이야")
+        
+    })
+})
 
