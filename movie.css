@@ -40,9 +40,20 @@ body {
     width: 220px;
 }
 
-.search-container button {
-    height: 26px;
-    width: 40px
+.searchBtn {
+    background-color: #E50914;
+    border: #E50914;
+    border-radius: 5px;
+    font-weight: 700;
+    height: 22px;
+    width: 50px;
+    margin-left: 5px;
+    color: black
+    }
+
+.searchBtn:hover{
+    background-color:#92080f;
+    border:#92080f;
 }
 
 
@@ -53,6 +64,7 @@ body {
     transform: scale(1);
     -webkit-transition: .15s ease-in-out;
     transition: .15s ease-in-out;
+    
 }
 
 .movie-card:hover {
@@ -102,6 +114,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 
 
 .posterId {
