@@ -42,7 +42,7 @@ for (let i = 0; i < 5; i++) {
                 }
 
                 // 검색 기능
-
+                document.querySelector('.searchInput').focus();
                 const searchBtn = document.querySelector('.searchBtn');
                 const searchInput = document.querySelector('.searchInput');
 
@@ -64,6 +64,13 @@ for (let i = 0; i < 5; i++) {
                     e.preventDefault();
                     search();
                 });
+                // 검색 엔터
+                searchInput.addEventListener("keyup", (e) => {
+                    e.preventDefault();
+                    if (e.keyCode === 13 || e.which === 13) {
+                        search();
+                    }
+                })
 
                 temp.innerHTML = `
             <div id="wook" class="movie-card" data-bs-toggle="modal" data-bs-target="#${strposter_path1}">
@@ -100,7 +107,7 @@ for (let i = 0; i < 5; i++) {
     </div>`;
                 document.querySelector(".movie-grid").appendChild(temp);
 
-                
+
             })
         })
         .catch(error => console.log('ERROR'));
