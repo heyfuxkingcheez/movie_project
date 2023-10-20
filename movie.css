@@ -172,3 +172,27 @@ a {
 .modal-footer, .modal-header {
     border-color: #141414;
 }
+.goTop{
+    height:55px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50px;
+    background-color: #E50914;
+    border-color: #0c0c0c;;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+
+}
+.goTop:hover{
+    background-color: #92080f;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.arrow {
+    padding-left: 17px;
+    font-weight: 500px;
+
+}
