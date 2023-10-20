@@ -19,6 +19,7 @@ body {
     align-items: center;
     padding-left: 40px;
     background-color: #0c0c0c;
+    
 }
 
 .logo {
@@ -151,6 +152,11 @@ footer {
     font-size: 30px;
     
 }
+.footerIconBox i:hover {
+    color: #92080f;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+}
 
 a {
     color: inherit;
@@ -180,16 +186,18 @@ a {
     justify-content: space-between;
     border-radius: 50px;
     background-color: #E50914;
-    border-color: #0c0c0c;;
     position: fixed;
     bottom: 20px;
     right: 40px;
+    border-width: 0.4em;
+    border-color: #141414;
 
 }
 .goTop:hover{
     background-color: #92080f;
     cursor: pointer;
     transition: .3s ease-in-out;
+    
 }
 .arrow {
     padding-left: 17px;
