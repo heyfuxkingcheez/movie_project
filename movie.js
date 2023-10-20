@@ -64,13 +64,13 @@ for (let i = 0; i < 5; i++) {
                     e.preventDefault();
                     search();
                 });
-                // 검색 엔터
-                searchInput.addEventListener("keyup", (e) => {
-                    e.preventDefault();
-                    if (e.keyCode === 13 || e.which === 13) {
-                        search();
-                    }
-                })
+                // 검색 엔터 
+                // searchInput.addEventListener("keyup", (e) => {
+                //     e.preventDefault();
+                //     if (e.keyCode === 13 || e.which === 13) {
+                //         search();
+                //     }
+                // })
 
                 temp.innerHTML = `
             <div id="wook" class="movie-card" data-bs-toggle="modal" data-bs-target="#${strposter_path1}">
