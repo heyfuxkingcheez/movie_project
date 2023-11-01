@@ -37,17 +37,7 @@ for (let i = 0; i < 5; i++) {
                 let movieDate = movieArr[i].release_date;
                 let moviePoster1 = movieArr[i].poster_path;
                 let strposter_path = moviePoster1.substr(2, 10);
-                let strposter_path1 = strposter_path
-                    .replace('1', '')
-                    .replace('2', '')
-                    .replace('3', '')
-                    .replace('4', '')
-                    .replace('5', '')
-                    .replace('6', '')
-                    .replace('7', '')
-                    .replace('8', '')
-                    .replace('9', '')
-                    .replace('0', '');
+                let strposter_path1 = strposter_path;
                 // console.log("코드보면 웃음 밖에 안나옴 =>", strposter_path1)
 
                 // 제목 길이 ...로 줄이기
