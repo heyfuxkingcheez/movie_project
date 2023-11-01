@@ -1,12 +1,11 @@
-
 // HTTP 요청에 대한 옵션을 정의합니다.
 const options = {
     method: 'GET',
     headers: {
         accept: 'application/json',
         Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzc4YmI0ZTA3ZGM2ZmM5NTIwYjg2OGU2OTQ0MjA5MSIsInN1YiI6IjY1MmY3MTEwYzk5NWVlMDEwMGRlOWEzOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6feX7u20gdSOrsez2RlWSmZyIfdyK-tkrj6YwN2JHIk'
-    }
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNzc4YmI0ZTA3ZGM2ZmM5NTIwYjg2OGU2OTQ0MjA5MSIsInN1YiI6IjY1MmY3MTEwYzk5NWVlMDEwMGRlOWEzOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6feX7u20gdSOrsez2RlWSmZyIfdyK-tkrj6YwN2JHIk',
+    },
 };
 // 영화 데이터를 저장할 변수를 선언합니다.
 let searchArr;
@@ -14,21 +13,20 @@ let movieMap = new Map();
 
 // 반복문을 사용하여 영화 데이터를 가져옵니다.
 for (let i = 0; i < 5; i++) {
-    fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${i}`,
-        options)
-        .then(response => response.json())
-        .then(response => {
+    fetch(`https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=${i}`, options)
+        .then((response) => response.json())
+        .then((response) => {
             // API 응답에서 영화 결과를 추출합니다
             let movieResult = response.results;
             let movieArr = [...movieResult];
             searchArr = response['results'];
-            console.log("api불러오기 성공!", searchArr);
+            // console.log("api불러오기 성공!", searchArr);
 
             // 각 영화에 대한 HTML 요소를 생성합니다.
             movieArr.forEach((movie, i) => {
                 // 각 영화를 위한 div 요소를 생성합니다.
-                let temp = document.createElement("div");
-                temp.setAttribute("class", "poster");
+                let temp = document.createElement('div');
+                temp.setAttribute('class', 'poster');
 
                 // API 응답에서 영화 정보를 추출합니다.
                 let movieTitle = movieArr[i].title;
@@ -37,10 +35,20 @@ for (let i = 0; i < 5; i++) {
                 let movieId = movieArr[i].id;
                 let movieRating = movieArr[i].vote_average;
                 let movieDate = movieArr[i].release_date;
-                let moviePoster1 = movieArr[i].poster_path
+                let moviePoster1 = movieArr[i].poster_path;
                 let strposter_path = moviePoster1.substr(2, 10);
-                let strposter_path1 = strposter_path.replace('1', '').replace('2', '').replace('3', '').replace('4', '').replace('5', '').replace('6', '').replace('7', '').replace('8', '').replace('9', '').replace('0', '');
-                console.log("코드보면 웃음 밖에 안나옴ㅋ =>", strposter_path1)
+                let strposter_path1 = strposter_path
+                    .replace('1', '')
+                    .replace('2', '')
+                    .replace('3', '')
+                    .replace('4', '')
+                    .replace('5', '')
+                    .replace('6', '')
+                    .replace('7', '')
+                    .replace('8', '')
+                    .replace('9', '')
+                    .replace('0', '');
+                // console.log("코드보면 웃음 밖에 안나옴 =>", strposter_path1)
 
                 // 제목 길이 ...로 줄이기
                 let limitLength = 25;
@@ -66,14 +74,14 @@ for (let i = 0; i < 5; i++) {
                         } else {
                             movieMap.get(movieTitle).style.display = 'none';
                         }
-                    })
+                    });
                 }
                 // 검색 버튼에 클릭 이벤트 리스너를 추가합니다.
-                searchBtn.addEventListener("click", (e) => {
+                searchBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     search();
                 });
-                // 검색 엔터 
+                // 검색 엔터
                 // searchInput.addEventListener("keyup", (e) => {
                 //     e.preventDefault();
                 //     if (e.keyCode === 13 || e.which === 13) {
@@ -95,7 +103,7 @@ for (let i = 0; i < 5; i++) {
                 <span class="rating">⭐${movieRating}</span>
             
                 </div>
-                <p class="overview">${movieOverview.length > 0 ? movieOverview : "줄거리가 없습니다."}</p>
+                <p class="overview">${movieOverview.length > 0 ? movieOverview : '줄거리가 없습니다.'}</p>
             </div>
             </div>
             <div class="modal fade wook" id="${strposter_path1}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -116,12 +124,8 @@ for (let i = 0; i < 5; i++) {
         </div>
     </div>`;
                 // 영화 요소를 영화 그리드에 추가합니다.
-                document.querySelector(".movie-grid").appendChild(temp);
-
-
-            })
+                document.querySelector('.movie-grid').appendChild(temp);
+            });
         })
-        .catch(error => console.log('ERROR'));
+        .catch((error) => console.log('ERROR'));
 }
-
-
